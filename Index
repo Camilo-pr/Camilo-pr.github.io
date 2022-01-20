@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <body oncontextmenu="return false;">
+    <video
+      style="
+        display: flex;
+        height: 97%;
+        width: 97%;
+        margin: auto auto auto auto;
+      "
+      controls
+      controlsList="nodownload"
+      autoplay
+      controls
+      onseeking="myFunction(this.currentTime)"
+    >
+      <source src="Video.mp4" type="video/mp4" />
+
+      <track
+        label="English"
+        kind="subtitles"
+        srclang="en"
+        src="VideoSubtitles_EN.VTT"
+        default
+      />
+      <track
+        label="Español"
+        kind="subtitles"
+        srclang="es"
+        src="VideoSubtitles_SP.VTT"
+      />
+
+      Your browser does not support the video tag from HTML5.
+    </video>
+
+    <script>
+      var currentpos = 0;
+
+      function myFunction(time) {
+        if (time > currentpos) {
+          video.currentTime = currentpos;
+        }
+      }
+
+      var video = document.getElementsByTagName("video")[0];
+
+      function getpos() {
+        currentpos = video.currentTime;
+      }
+
+      onesecond = setInterval("getpos()", 1000);
+    </script>
+  </body>
+</html>
